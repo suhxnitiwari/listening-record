@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Record | Suhani Tiwari</title>
+<meta name="author" content="Suhani Tiwari"><meta name="copyright" content="© 2026 Suhani Tiwari. All rights reserved.">
+<meta name="description" content="Four years of my Spotify pressed into one record: every groove is a month.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Caveat:wght@600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    /* Concept 2: four years pressed into one LP. Each groove is a month; the color is who owned it. Drop the needle anywhere. */
+    :root { --bg: #FAF1EF; --paper: #FFFBF8; --ink: #3A2626; --soft: #5E4A45; --dim: #8C7770; --pink: #D65478; --plum: #76344E;
+            --serif: "Bodoni Moda", Georgia, serif; --sans: "Instrument Sans", system-ui, sans-serif; --mono: "JetBrains Mono", monospace; --hand: "Caveat", cursive; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font-family: var(--sans); overflow-x: hidden; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 5; opacity: .45; mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .46 0 0 0 0 .3 0 0 0 0 .3 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    header { display: flex; justify-content: space-between; padding: 24px clamp(20px, 4vw, 56px); font: 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+    header a { color: var(--dim); text-decoration: none; }
+    main { display: grid; grid-template-columns: minmax(300px, 1fr) minmax(380px, 1.25fr); gap: clamp(20px, 4vw, 60px); align-items: center; padding: 0 clamp(20px, 4vw, 56px) 40px; min-height: calc(100vh - 70px); }
+    h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5.4vw, 78px); line-height: 1.02; margin: 0; letter-spacing: -.02em; }
+    h1 em { color: var(--plum); }
+    .lede { color: var(--soft); font-size: 17px; max-width: 34ch; margin: 16px 0 28px; }
+    .now { border-top: 1.5px solid var(--ink); padding-top: 18px; min-height: 230px; }
+    .now .when { font: 12px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--dim); }
+    .now h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4vw, 54px); margin: 6px 0 10px; }
+    .now .who { display: flex; align-items: center; gap: 12px; font-size: 16px; }
+    .now .who i { width: 14px; height: 14px; border-radius: 50%; display: inline-block; border: 1.5px solid var(--ink); }
+    .now .song { margin-top: 10px; color: var(--soft); }
+    .now .note { font: 26px var(--hand); color: var(--plum); margin-top: 12px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 18px; font: 11px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--dim); }
+    .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; border: 1px solid var(--ink); }
+    .deck { position: relative; aspect-ratio: 1; width: min(100%, 82vh); justify-self: center; }
+    .deck svg { width: 100%; height: 100%; overflow: visible; touch-action: none; }
+    .disc { cursor: grab; } .disc.drag { cursor: grabbing; }
+    .arm { cursor: grab; }
+    .hint { position: absolute; font: 24px var(--hand); color: var(--plum); pointer-events: none; }
+    .controls { display: flex; gap: 10px; margin-top: 18px; }
+    .controls button { border: 1.5px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 999px; padding: 10px 18px; font: 500 12px var(--mono); text-transform: uppercase; letter-spacing: .07em; cursor: pointer; }
+    .controls button.ghost { background: transparent; color: var(--ink); }
+    @media (max-width: 900px) { main { grid-template-columns: 1fr; } .deck { width: 100%; } }
+</style>
+</head>
+<body>
+<header><a href="https://suhanitiwari.com">Suhani Tiwari</a><span>The record · Side A · 2022 – 2026</span></header>
+<main>
+    <section>
+        <h1>Four years, pressed into <em>one record.</em></h1>
+        <p class="lede">Every groove is a month. Its color is the artist who owned it. Drop the needle anywhere, or spin the record and let it play.</p>
+        <div class="now" id="now"><div class="when">Side A · May 2022 → now</div><h2>Drop the needle.</h2><div class="note">pick up the arm and set it down on any groove →</div></div>
+        <div class="controls"><button id="playAll">▶ Play the whole side</button><button class="ghost" id="lift">Lift the needle</button></div>
+        <div class="legend" id="legend"></div>
+    </section>
+    <div class="deck" id="deck"></div>
+</main>
+<audio id="audio" preload="none"></audio>
+<script>
+(async () => {
+    const $ = s => document.querySelector(s), fmt = n => Math.round(n).toLocaleString('en-US');
+    const monthName = ym => new Date(ym + '-01T12:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    // covers and 30-second previews come straight from Apple's iTunes Search (JSONP), so this runs as a plain static site
+    const found = new Map();
+    function itunes(track, artist) {
+        const key = track + '|' + artist;
+        if (!found.has(key)) found.set(key, new Promise(resolve => {
+            const cb = 'it' + Math.random().toString(36).slice(2), tag = document.createElement('script');
+            const done = v => { clearTimeout(timer); delete window[cb]; tag.remove(); resolve(v || null); };
+            const timer = setTimeout(() => done(null), 6000);
+            window[cb] = d => done(d && d.results && d.results[0]);
+            tag.src = `https://itunes.apple.com/search?term=${encodeURIComponent(artist + ' ' + track)}&entity=song&limit=1&callback=${cb}`;
+            tag.onerror = () => done(null); document.head.appendChild(tag);
+        }));
+        return found.get(key);
+    }
+    const setLabel = song => itunes(song.track, song.artist).then(it => { if (it && it.artworkUrl100) $('#labelImg').setAttribute('href', it.artworkUrl100.replace('100x100bb', '600x600bb')); });
+    const data = await fetch('data/record.json').then(r => r.json());
+    const share = Object.fromEntries(data.months.map(m => [m.month, { share_pct: m.share }]));
+    const months = data.months, n = months.length, top = data.topArtist, p = { owned: data.owned, months };
+
+    // groove colors: the main character is the black of the vinyl itself; everyone else shows up in color
+    const others = [...new Set(months.map(m => m.winner).filter(w => w !== top))];
+    const palette = ['#5BA4C9', '#E3A12F', '#9B7BD8', '#5FB08A', '#E07B6A', '#C9A0DC'];
+    const colorOf = w => w === top ? '#2A1C1C' : palette[others.indexOf(w) % palette.length];
+    $('#legend').innerHTML = `<span><i style="background:#2A1C1C"></i>${top} · ${p.owned} grooves</span>` + others.map(w => `<span><i style="background:${colorOf(w)}"></i>${w}</span>`).join('');
+
+    // the record: oldest month on the outside edge, today by the label
+    const C = 350, R = 300, LABEL = 92, totalH = months.reduce((t, m) => t + Math.sqrt(m.hours), 0);
+    let r = R; const rings = months.map(m => { const w = Math.sqrt(m.hours) / totalH * (R - LABEL - 6); const ring = { m, outer: r, inner: r - w, mid: r - w / 2, w }; r -= w; return ring; });
+    const ringSvg = rings.map((g, i) => `<circle cx="${C}" cy="${C}" r="${g.mid}" fill="none" stroke="${colorOf(g.m.winner)}" stroke-width="${Math.max(1, g.w - 0.6)}" data-i="${i}"/>`).join('');
+    const sheen = [...Array(46).keys()].map(k => `<circle cx="${C}" cy="${C}" r="${LABEL + 8 + k * 4.4}" fill="none" stroke="#ffffff" stroke-opacity=".035" stroke-width="1"/>`).join('');
+    $('#deck').innerHTML = `<svg viewBox="0 0 760 700">
+        <defs><clipPath id="lbl"><circle cx="${C}" cy="${C}" r="${LABEL - 4}"/></clipPath>
+            <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient></defs>
+        <rect x="18" y="18" width="740" height="664" rx="34" fill="#E9DCD6" stroke="#3A2626" stroke-width="3"/>
+        <g class="disc" id="disc"><circle cx="${C}" cy="${C}" r="${R + 6}" fill="#1A1010" stroke="#3A2626" stroke-width="3"/>${ringSvg}${sheen}
+            <image id="labelImg" href="" x="${C - LABEL}" y="${C - LABEL}" width="${LABEL * 2}" height="${LABEL * 2}" clip-path="url(#lbl)" preserveAspectRatio="xMidYMid slice"/>
+            <circle cx="${C}" cy="${C}" r="${LABEL - 4}" fill="none" stroke="#1A1010" stroke-width="3"/><circle cx="${C}" cy="${C}" r="6" fill="#FAF1EF" stroke="#1A1010" stroke-width="2"/></g>
+        <circle cx="${C}" cy="${C}" r="${R + 6}" fill="url(#shine)" pointer-events="none"/>
+        <circle id="glow" cx="${C}" cy="${C}" r="0" fill="none" stroke="#F4A7B9" stroke-width="5" opacity="0" pointer-events="none"/>
+        <g class="arm" id="arm"><circle cx="690" cy="90" r="34" fill="#C9B9B3" stroke="#3A2626" stroke-width="3"/><circle cx="690" cy="90" r="12" fill="#3A2626"/>
+            <path id="armline" d="" fill="none" stroke="#3A2626" stroke-width="9" stroke-linecap="round"/><rect id="head" width="34" height="20" rx="4" fill="#3A2626"/></g>
+        <text x="${C}" y="690" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#8C7770">OUTSIDE: MAY 2022 · INSIDE: NOW</text></svg>
+        <p class="hint" style="right:2%;top:24%">grab the arm</p>`;
+    const svg = $('#deck svg'), disc = $('#disc'), audio = $('#audio');
+    const toSvg = e => { const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse()); };
+
+    // the tonearm: pivot top-right; the stylus sits on whichever groove you choose
+    const PIV = { x: 690, y: 90 }, dist = Math.hypot(PIV.x - C, PIV.y - C);
+    let cur = -1, armR = R + 40, spin = 0, spinning = false, last = performance.now();
+    function placeArm(rad) {
+        armR = rad;
+        // the stylus point on the circle of radius rad, on the side nearest the pivot
+        const base = Math.atan2(PIV.y - C, PIV.x - C), off = Math.acos(Math.max(-1, Math.min(1, (rad * rad + dist * dist - 330 * 330) / (2 * rad * dist)))) || 0.6;
+        const a = base + off, sx = C + Math.cos(a) * rad, sy = C + Math.sin(a) * rad;
+        $('#armline').setAttribute('d', `M${PIV.x},${PIV.y} L${sx},${sy}`);
+        const ang = Math.atan2(sy - PIV.y, sx - PIV.x) * 180 / Math.PI;
+        $('#head').setAttribute('transform', `translate(${sx - 17},${sy - 10}) rotate(${ang} 17 10)`);
+    }
+    placeArm(R + 40);
+    function groove(i, sound = true) {
+        if (i === cur || i < 0 || i >= n) return; cur = i;
+        const g = rings[i], m = g.m, sh = share[m.month];
+        setLabel(m.song);
+        const glow = $('#glow'); glow.setAttribute('r', g.mid); glow.setAttribute('stroke-width', Math.max(3, g.w + 2)); glow.setAttribute('opacity', .9);
+        const ago = n - 1 - i;
+        $('#now').innerHTML = `<div class="when">Groove ${i + 1} of ${n} · ${ago ? `${ago} month${ago === 1 ? '' : 's'} ago` : 'this month'}</div><h2>${monthName(m.month)}</h2>
+            <div class="who"><i style="background:${colorOf(m.winner)}"></i><span>#1: <b>${m.winner}</b>${sh ? `, ${Math.round(sh.share_pct)}% of the month` : ''}</span></div>
+            <div class="song">♪ On repeat: "${m.song.track}" · ${m.song.artist}, ${m.song.listens}×</div>
+            <div class="note">${fmt(m.hours)} hours that month${m.winner !== top ? ` · one of the ${p.months.length - p.owned} months she lost` : ''}</div>`;
+        if (sound) sing(m.song);
+    }
+    async function sing(song) {
+        const it = await itunes(song.track, song.artist); if (!it || !it.previewUrl) return;
+        audio.src = it.previewUrl; audio.volume = .8; audio.play().catch(() => {});
+    }
+    const ringAt = rad => rings.findIndex(g => rad <= g.outer && rad >= g.inner);
+
+    // pick up the arm and set it down
+    let armDrag = false;
+    $('#arm').addEventListener('pointerdown', e => { armDrag = true; svg.setPointerCapture(e.pointerId); });
+    svg.addEventListener('pointermove', e => {
+        if (!armDrag) return; const q = toSvg(e), rad = Math.max(LABEL + 2, Math.min(R + 40, Math.hypot(q.x - C, q.y - C)));
+        placeArm(rad); const i = ringAt(rad); if (i >= 0) groove(i, false);
+    });
+    svg.addEventListener('pointerup', () => { if (!armDrag) return; armDrag = false; const i = ringAt(armR); if (i >= 0) { cur = -1; groove(i, true); spinning = true; } });
+
+    // spin the record by hand: a full turn moves the needle one groove inward
+    let discDrag = null;
+    disc.addEventListener('pointerdown', e => { const q = toSvg(e); discDrag = { a: Math.atan2(q.y - C, q.x - C), acc: 0 }; disc.classList.add('drag'); svg.setPointerCapture(e.pointerId); });
+    svg.addEventListener('pointermove', e => {
+        if (!discDrag) return; const q = toSvg(e), a = Math.atan2(q.y - C, q.x - C); let da = a - discDrag.a; if (da > Math.PI) da -= 2 * Math.PI; if (da < -Math.PI) da += 2 * Math.PI;
+        discDrag.a = a; spin += da * 180 / Math.PI; discDrag.acc += da; disc.setAttribute('transform', `rotate(${spin} ${C} ${C})`);
+        const steps = Math.trunc(discDrag.acc / (Math.PI / 2)); if (steps) { discDrag.acc -= steps * Math.PI / 2; const i = Math.max(0, Math.min(n - 1, (cur < 0 ? 0 : cur) + steps)); placeArm(rings[i].mid); groove(i, true); }
+    });
+    svg.addEventListener('pointerup', () => { discDrag = null; disc.classList.remove('drag'); });
+
+    // 33⅓ rpm while a groove plays; "play the whole side" walks the needle inward month by month
+    (function turn(t) { const dt = t - last; last = t; if (spinning && !discDrag) { spin += dt * 0.2; disc.setAttribute('transform', `rotate(${spin} ${C} ${C})`); } requestAnimationFrame(turn); })(last);
+    let side = null;
+    $('#playAll').onclick = () => {
+        if (side) { clearInterval(side); side = null; $('#playAll').textContent = '▶ Play the whole side'; return; }
+        $('#playAll').textContent = '❚❚ Pause'; spinning = true; let i = cur < 0 ? 0 : cur;
+        const step = () => { placeArm(rings[i].mid); cur = -1; groove(i, true); i++; if (i >= n) { clearInterval(side); side = null; $('#playAll').textContent = '▶ Play the whole side'; } };
+        step(); side = setInterval(step, 4200);
+    };
+    $('#lift').onclick = () => { spinning = false; audio.pause(); placeArm(R + 40); $('#glow').setAttribute('opacity', 0); if (side) { clearInterval(side); side = null; $('#playAll').textContent = '▶ Play the whole side'; } };
+    setLabel(data.firstSong);
+})();
+</script>
+</body>
+</html>
